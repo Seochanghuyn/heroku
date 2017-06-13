@@ -1,0 +1,14 @@
+
+
+<a href="/board/new">글쓰기</a></br>
+<% if user_signed_in? %>
+    <%= current_user.email %>님</br>
+    <%= link_to "log-out", destroy_user_session_path ,method: :delete %>
+<% else %>
+    <%= link_to "log-in",  new_user_session_path %>
+<% end %>
+
+<% @boards.each do |b| %>
+    <a href="/board/<%=b.id%>/show"><%=b.title%></a></br>
+
+<% end %>
